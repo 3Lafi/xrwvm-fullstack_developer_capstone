@@ -18,10 +18,19 @@ from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from djangoapp import views as djangoapp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('djangoapp/', include('djangoapp.urls')),
+    # Capstone rubric compatibility: expose the data endpoints at the site
+    # root as well as under /djangoapp/.
+    path('fetchDealers', djangoapp_views.get_dealerships),
+    path('fetchDealers/<str:state>', djangoapp_views.get_dealerships),
+    path('fetchDealer/<int:dealer_id>', djangoapp_views.get_dealer_details),
+    path('fetchReviews/dealer/<int:dealer_id>', djangoapp_views.get_dealer_reviews),
+    path('fetchCarMakes', djangoapp_views.get_cars),
+    path('analyzeReview/<str:text>', djangoapp_views.analyze_review),
     path('', TemplateView.as_view(template_name="index.html")),
     path('about', TemplateView.as_view(template_name="About.html")),
     path('contact', TemplateView.as_view(template_name="Contact.html")),
