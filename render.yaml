@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: dealership-reviews-capstone
+    runtime: python
+    rootDir: server
+    buildCommand: pip install -r requirements.txt && cd frontend && npm ci && npm run build && cd .. && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn djangoproj.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
