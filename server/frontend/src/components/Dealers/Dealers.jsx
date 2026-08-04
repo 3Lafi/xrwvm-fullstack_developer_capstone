@@ -28,7 +28,9 @@ const Dealers = () => {
   }
 
   const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const requestedState = pathParts[0] === 'dealers' && pathParts[1] ? decodeURIComponent(pathParts[1]) : '';
+    const res = await fetch(requestedState ? `${dealer_url_by_state}${requestedState}` : dealer_url, {
       method: "GET"
     });
     const retobj = await res.json();
