@@ -33,7 +33,7 @@ def login_user(request):
 
 def logout_request(request):
     logout(request)
-    return JsonResponse({'status': 200, 'message': 'Logged out'})
+    return JsonResponse({'userName': '', 'status': 200, 'message': 'Logged out'})
 
 
 @csrf_exempt
