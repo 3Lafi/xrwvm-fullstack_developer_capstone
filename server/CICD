@@ -1,0 +1,8 @@
+GitHub Actions: Django and React CI
+Run URL: https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/actions/runs/30930975705
+Conclusion: success
+
+✓ Install Django dependencies
+✓ Validate Django project
+✓ Install frontend dependencies
+✓ Build frontend
