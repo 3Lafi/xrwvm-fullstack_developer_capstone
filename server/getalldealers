@@ -1,0 +1,2 @@
+curl.exe http://127.0.0.1:8000/djangoapp/get_dealers
+{"status":200,"dealers":[...50 dealership records returned...]}

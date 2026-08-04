@@ -1,0 +1,30 @@
+name: Django and React CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Django dependencies
+        run: pip install -r server/requirements.txt
+      - name: Validate Django project
+        working-directory: server
+        run: python manage.py check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: server/frontend/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: server/frontend
+        run: npm ci
+      - name: Build frontend
+        working-directory: server/frontend
+        run: npm run build

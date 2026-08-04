@@ -1,0 +1,2 @@
+curl.exe http://127.0.0.1:8000/djangoapp/get_cars
+{"status":200,"CarModels":[...100 car make/model records returned...]}
