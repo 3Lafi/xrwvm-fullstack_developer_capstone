@@ -25,5 +25,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
     path('about', TemplateView.as_view(template_name="About.html")),
     path('contact', TemplateView.as_view(template_name="Contact.html")),
-    re_path(r'^(?:dealers/.*|dealer/\d+|postreview/\d+|login|register)$', TemplateView.as_view(template_name="index.html")),
+    # Serve the React single-page app for every client-side route, including
+    # the bare /dealers path produced by the "View Dealerships" link.
+    re_path(r'^(?:dealers(?:/.*)?|dealer/\d+|postreview/\d+|login|register)$', TemplateView.as_view(template_name="index.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
