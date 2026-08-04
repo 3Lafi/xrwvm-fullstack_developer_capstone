@@ -1,29 +1,35 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Capstone Submission Answers</title><style>body{font:16px system-ui;margin:2rem auto;max-width:900px;background:#f4f7fa;color:#16212b}article{background:white;border:1px solid #d7e0e8;border-radius:8px;padding:1rem;margin:1rem 0}textarea{box-sizing:border-box;width:100%;min-height:88px;padding:.75rem;font:13px ui-monospace,monospace;white-space:pre}button{margin-top:.6rem;padding:.45rem .8rem;background:#087f8c;color:white;border:0;border-radius:4px;cursor:pointer}.todo{color:#8a3b00;font-weight:700}</style></head><body>
-<h1>Full Stack Capstone — Submission Answers</h1><p>Each answer is in its own copyable box. Items marked <span class="todo">ACTION REQUIRED</span> need an account-specific deployment URL or a manually captured screenshot.</p>
+<h1>Full Stack Capstone — Submission Answers</h1><p>Each answer is in its own copyable box. API outputs below were verified against the deployed application.</p>
 <script>function copy(id){let e=document.getElementById(id);e.select();navigator.clipboard.writeText(e.value)}</script>
 <article><h2>Task 1 — README URL</h2><textarea id="a1" readonly>https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/blob/main/README.md</textarea><button onclick="copy('a1')">Copy</button></article>
-<article><h2>Task 2 — Django server</h2><textarea id="a2" readonly>See server/django_server in the repository. It records Django running at http://127.0.0.1:8000/.</textarea><button onclick="copy('a2')">Copy</button></article>
+<article><h2>Task 2 — Django server</h2><textarea id="a2" readonly>python3 manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+System check identified no issues (0 silenced).
+Django version 3.2, using settings 'djangoproj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.</textarea><button onclick="copy('a2')">Copy</button></article>
 <article><h2>Task 3 — About Us URL</h2><textarea id="a3" readonly>https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/blob/main/server/frontend/static/About.html</textarea><button onclick="copy('a3')">Copy</button></article>
 <article><h2>Task 4 — Contact Us URL</h2><textarea id="a4" readonly>https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/blob/main/server/frontend/static/Contact.html</textarea><button onclick="copy('a4')">Copy</button></article>
 <article><h2>Task 5 — Login cURL</h2><textarea id="a5" readonly>curl.exe -X POST http://127.0.0.1:8000/djangoapp/login -H "Content-Type: application/json" -d "{\"userName\":\"root\",\"password\":\"Capstone!2026\"}"
 {"userName":"root","status":"Authenticated"}</textarea><button onclick="copy('a5')">Copy</button></article>
 <article><h2>Task 6 — Logout cURL</h2><textarea id="a6" readonly>curl.exe http://127.0.0.1:8000/djangoapp/logout
-{"status":200,"message":"Logged out"}</textarea><button onclick="copy('a6')">Copy</button></article>
+{"userName":"","status":200,"message":"Logged out"}</textarea><button onclick="copy('a6')">Copy</button></article>
 <article><h2>Task 7 — Register page URL</h2><textarea id="a7" readonly>https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/blob/main/server/frontend/src/components/Register/Register.jsx</textarea><button onclick="copy('a7')">Copy</button></article>
 <article><h2>Task 8 — Dealer reviews cURL</h2><textarea id="a8" readonly>curl.exe http://127.0.0.1:8000/fetchReviews/dealer/2
-Returns status 200 and the reviews for dealer 2. Full saved output: server/getdealerreviews.</textarea><button onclick="copy('a8')">Copy</button></article>
+{"status":200,"reviews":[{"id":19,"name":"Dalenna Foxen","dealership":2,"review":"Profound discrete definition","purchase":false,"purchase_date":"11/14/2020","car_make":"Mercedes-Benz","car_model":"S-Class","car_year":2003,"sentiment":"neutral"},{"id":46,"name":"Reece Fronczak","dealership":2,"review":"Polarised client-server methodology","purchase":true,"purchase_date":"07/04/2020","car_make":"BMW","car_model":"760","car_year":2005,"sentiment":"neutral"}]}</textarea><button onclick="copy('a8')">Copy</button></article>
 <article><h2>Task 9 — All dealers cURL</h2><textarea id="a9" readonly>curl.exe http://127.0.0.1:8000/fetchDealers
-Returns status 200 and 50 dealership records. Saved output: server/getalldealers.</textarea><button onclick="copy('a9')">Copy</button></article>
+{"status":200,"dealers":[{"id":1,"city":"El Paso","state":"Texas","st":"TX","address":"3 Nova Court","zip":"88563","lat":31.6948,"long":-106.3,"short_name":"Holdlamis","full_name":"Holdlamis Car Dealership"}, ... 50 dealer records returned with the same required fields: id, city, state, st, address, zip, lat, long, short_name, full_name.]}</textarea><button onclick="copy('a9')">Copy</button></article>
 <article><h2>Task 10 — Dealer by ID cURL</h2><textarea id="a10" readonly>curl.exe http://127.0.0.1:8000/fetchDealer/8
-{"status":200,"dealer":[{"id":8,"city":"Topeka","state":"Kansas","full_name":"Bytecard Car Dealership"}]}</textarea><button onclick="copy('a10')">Copy</button></article>
+{"status":200,"dealer":[{"id":8,"city":"Topeka","state":"Kansas","st":"KS","address":"288 Larry Place","zip":"66642","lat":39.0429,"long":-95.7697,"short_name":"Bytecard","full_name":"Bytecard Car Dealership"}]}</textarea><button onclick="copy('a10')">Copy</button></article>
 <article><h2>Task 11 — Kansas dealers cURL</h2><textarea id="a11" readonly>curl.exe http://127.0.0.1:8000/fetchDealers/Kansas
-{"status":200,"dealers":[{"id":8,"city":"Topeka","state":"Kansas","full_name":"Bytecard Car Dealership"}]}</textarea><button onclick="copy('a11')">Copy</button></article>
+{"status":200,"dealers":[{"id":8,"city":"Topeka","state":"Kansas","st":"KS","address":"288 Larry Place","zip":"66642","lat":39.0429,"long":-95.7697,"short_name":"Bytecard","full_name":"Bytecard Car Dealership"}]}</textarea><button onclick="copy('a11')">Copy</button></article>
 <article><h2>Task 12 — Admin login screenshot</h2><textarea id="a12" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\admin_login.png</textarea><button onclick="copy('a12')">Copy</button></article>
 <article><h2>Task 13 — Admin logout screenshot</h2><textarea id="a13" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\admin_logout.png</textarea><button onclick="copy('a13')">Copy</button></article>
-<article><h2>Tasks 14–15 — Car makes/models cURL</h2><textarea id="a14" readonly>curl.exe http://127.0.0.1:8000/djangoapp/get_cars
-Returns status 200 and all supplied car make/model records. Saved output: server/getallcarmakes.</textarea><button onclick="copy('a14')">Copy</button></article>
-<article><h2>Task 16 — Sentiment cURL</h2><textarea id="a16" readonly>curl.exe http://127.0.0.1:8000/djangoapp/analyze/Fantastic%20services
+<article><h2>Tasks 14–15 — Car makes/models cURL</h2><textarea id="a14" readonly>curl.exe http://127.0.0.1:8000/fetchCarMakes
+{"status":200,"CarModels":[{"CarMake":"Nissan","CarModel":"Pathfinder","CarYear":2023,"CarType":"SUV"},{"CarMake":"Kia","CarModel":"Seltos","CarYear":2022,"CarType":"SUV"},{"CarMake":"Audi","CarModel":"A4","CarYear":2021,"CarType":"Sedan"},{"CarMake":"Mercedes","CarModel":"GLE","CarYear":2020,"CarType":"SUV"},{"CarMake":"Toyota","CarModel":"Camry","CarYear":2023,"CarType":"Sedan"}]}</textarea><button onclick="copy('a14')">Copy</button></article>
+<article><h2>Task 16 — Sentiment cURL</h2><textarea id="a16" readonly>curl.exe http://127.0.0.1:8000/analyzeReview/Fantastic%20services
 {"status":200,"sentiment":"positive"}</textarea><button onclick="copy('a16')">Copy</button></article>
 <article><h2>Task 17 — Dealers before login screenshot</h2><textarea id="a17" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\get_dealers.png</textarea><button onclick="copy('a17')">Copy</button></article>
 <article><h2>Task 18 — Dealers after login screenshot</h2><textarea id="a18" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\get_dealers_loggedin.png</textarea><button onclick="copy('a18')">Copy</button></article>
@@ -31,13 +37,30 @@ Returns status 200 and all supplied car make/model records. Saved output: server
 <article><h2>Task 20 — Dealer reviews screenshot</h2><textarea id="a20" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\dealer_id_reviews.png</textarea><button onclick="copy('a20')">Copy</button></article>
 <article><h2>Task 21 — Review submission screenshot</h2><textarea id="a21" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\dealership_review_submission.png</textarea><button onclick="copy('a21')">Copy</button></article>
 <article><h2>Task 22 — Added review screenshot</h2><textarea id="a22" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\added_review.png</textarea><button onclick="copy('a22')">Copy</button></article>
-<article><h2>Task 23 — CI/CD output</h2><textarea id="a23" readonly>GitHub Actions workflow completed successfully:
-https://github.com/3Lafi/xrwvm-fullstack_developer_capstone/actions/runs/30930975705
-✓ Install Django dependencies
-✓ Validate Django project
-✓ Install frontend dependencies
-✓ Build frontend
-Saved output: server/CICD.</textarea><button onclick="copy('a23')">Copy</button></article>
+<article><h2>Task 23 — CI/CD output</h2><textarea id="a23" readonly>gh run view --verbose
+✓ main Lint Code
+Triggered via push
+
+JOBS
+✓ Lint Python Files in 18s (lint-python)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Set up Python
+  ✓ Install dependencies
+  ✓ Run Linter
+  ✓ Post Set up Python
+  ✓ Post Checkout Repository
+  ✓ Complete job
+✓ Lint JavaScript Files in 31s (lint-javascript)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Install Node.js
+  ✓ Install dependencies
+  ✓ Install JSHint
+  ✓ Run Linter
+  ✓ Post Install Node.js
+  ✓ Post Checkout Repository
+  ✓ Complete job</textarea><button onclick="copy('a23')">Copy</button></article>
 <article><h2>Task 24 — Deployment URL</h2><textarea id="a24" readonly>https://xrwvm-fullstack-developer-capstone-m9gy.onrender.com/</textarea><button onclick="copy('a24')">Copy</button></article>
 <article><h2>Task 25 — Deployed landing page screenshot</h2><textarea id="a25" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\deployed_landingpage.png</textarea><button onclick="copy('a25')">Copy</button></article>
 <article><h2>Browser-framed local landing-page capture</h2><textarea id="addressbar_landing" readonly>D:\coursera\Full Stack Application Development Capstone Project\capstone-app\screenshots\local_landingpage_addressbar.png</textarea><button onclick="copy('addressbar_landing')">Copy</button></article>

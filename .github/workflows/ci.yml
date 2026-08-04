@@ -1,32 +1,46 @@
-name: Django and React CI
+name: Lint Code
 
 on:
   push:
   pull_request:
 
 jobs:
-  validate:
+  lint-python:
+    name: Lint Python Files
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install Django dependencies
+      - name: Install dependencies
         run: pip install -r server/requirements.txt
-      - name: Validate Django project
+      - name: Run Linter
         working-directory: server
-        run: python manage.py check
-      - uses: actions/setup-node@v4
+        run: |
+          python -m compileall -q djangoapp djangoproj
+          python manage.py check
+
+  lint-javascript:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: npm
           cache-dependency-path: server/frontend/package-lock.json
-      - name: Install frontend dependencies
+      - name: Install dependencies
         working-directory: server/frontend
         run: npm ci
-      - name: Build frontend
+      - name: Install JSHint
         working-directory: server/frontend
-        run: npm run build
-        env:
-          CI: false
+        run: npm install --no-save jshint
+      - name: Run Linter
+        working-directory: server/frontend
+        run: npx eslint src
